@@ -16,6 +16,7 @@ data:extend{coke}
 local asphalt = table.deepcopy(data.raw["item"]["concrete"])
 asphalt.name = "asphalt"
 asphalt.order = "b[asphalt]-a[plain]"
+asphalt.icon = "__better-oil-processing__/graphics/icons/asphalt.png"
 asphalt.place_as_tile.result = "asphalt"
 data:extend{asphalt}
 
@@ -198,7 +199,7 @@ hot_tar_refining.ingredients = {
 }
 hot_tar_refining.results = {
 	{
-		amount = 30,
+		amount = 35,
 		name = "lubricant",
 		type = "fluid"
 	},
@@ -220,6 +221,17 @@ hot_tar_refining.results = {
 }
 hot_tar_refining.icon = "__better-oil-processing__/graphics/icons/fluid/hot-tar-refining.png"
 data:extend{hot_tar_refining}
+
+-- lubricant from kerosene
+local lubricant_from_kerosene = table.deepcopy(data.raw["recipe"]["lubricant"])
+lubricant_from_kerosene.name = "lubricant-from-kerosene"
+replace_ingredient(lubricant_from_kerosene, "heavy-oil", {
+	amount = 30,
+	name = "kerosene",
+	type = "fluid"
+})
+lubricant_from_kerosene.icon = "__better-oil-processing__/graphics/icons/fluid/lubricant-from-kerosene.png"
+data:extend{lubricant_from_kerosene}
 
 -- hot tar cracking
 local hot_tar_cracking = table.deepcopy(data.raw["recipe"]["heavy-oil-cracking"])
@@ -364,6 +376,12 @@ volatile_gas_solidification.results = {
 		type = "item"
 	}
 }
+volatile_gas_solidification.crafting_machine_tint = {
+	primary    = { r = 1.000, g = 0.908, b = 0.400, a = 1 },
+	quaternary = { r = 0.969, g = 0.950, b = 0.419, a = 1 },
+	secondary  = { r = 1.000, g = 0.802, b = 0.572, a = 1 },
+	tertiary   = { r = 0.876, g = 0.819, b = 0.797, a = 1 }
+}
 volatile_gas_solidification.order = "b[fluid-chemistry]-e[volatile-gas-solidification]"
 volatile_gas_solidification.icon = "__better-oil-processing__/graphics/icons/fluid/volatile-gas-solidification.png"
 data:extend{volatile_gas_solidification}
@@ -374,7 +392,6 @@ data:extend{volatile_gas_solidification}
 local coal_coking = table.deepcopy(data.raw["recipe"]["solid-fuel-from-petroleum-gas"])
 coal_coking.name = "coal-coking"
 coal_coking.icon = "__better-oil-processing__/graphics/icons/coke.png"
---coal_coking.subgroup = "fluid-recipes"
 coal_coking.order = "c[oil-products]-b[coal-coking]"
 coal_coking.energy_required = 4.0
 coal_coking.ingredients = {

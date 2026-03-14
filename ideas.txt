@@ -67,5 +67,4 @@ Within 'Better Oil Refining':
 - solid fuel is made with volatile gas + petroleum (most efficient) or petroleum + kerosene
 - rocket fuel is made with volatile gas + solid fuel
 - asphalt (just another paver like concrete) can be made with hot tar and stone
-
 - make flamethrowers only take crude oil and kerosene

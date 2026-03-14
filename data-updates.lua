@@ -113,12 +113,12 @@ coal_liquefaction_recipe.ingredients = {
 }
 coal_liquefaction_recipe.results = {
 	{
-		amount = 30,
+		amount = 40,
 		name = "hot-tar",
 		type = "fluid"
 	},
 	{
-		amount = 45,
+		amount = 50,
 		name = "petroleum-gas",
 		type = "fluid"
 	},
@@ -174,6 +174,10 @@ lubricant_tech.effects = {
 	{
 		recipe = "hot-tar-refining",
 		type = "unlock-recipe"
+	},
+	{
+		recipe = "lubricant-from-kerosene",
+		type = "unlock-recipe"
 	}
 }
 
@@ -182,6 +186,15 @@ local rocket_fuel_recipe = data.raw["recipe"]["rocket-fuel"]
 replace_ingredient(rocket_fuel_recipe, "light-oil", {
 	amount = 10,
 	name = "kerosene",
+	type = "fluid"
+})
+
+-- acid neutralisation recipe tweaks
+local acid_neutralisation_recipe = data.raw["recipe"]["acid-neutralisation"]
+replace_result(acid_neutralisation_recipe, "steam", {
+	amount = 3000,
+	name = "steam",
+	temperature = 500,
 	type = "fluid"
 })
 

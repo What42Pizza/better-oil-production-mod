@@ -4,6 +4,6 @@
 	"title": "Better Oil Processing",
 	"author": "What42Pizza",
 	"factorio_version": "2.0",
-	"dependencies": ["base >= 2.0", "? space-age", "? Flare_Stack_Redux", "? GasWorks"],
-	"description": "Adds more realistic and interesting oil processing steps"
+	"dependencies": ["base >= 2.0", "? space-age", "? Flare Stack", "? Flare_Stack_Redux", "? GasWorks"],
+	"description": "Adds more realistic and interesting oil processing steps\n(Works with Flare Stack and/or Gas Works, but is balanced without them)"
 }

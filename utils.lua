@@ -14,7 +14,10 @@ function replace_ingredient(input, ingredient_name, new_ingredient)
 	end
 end
 
---function add_ingredient(input, ingredient, position)
---	if position == nil then position = #input.ingredients + 1 end
---	table.insert(input, position, ingredient)
---end
+function replace_result(input, result_name, new_result)
+	for k,v in pairs(input.results) do
+		if v.name == result_name then
+			input.results[k] = new_result
+		end
+	end
+end
