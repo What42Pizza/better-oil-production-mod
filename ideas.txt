@@ -6,6 +6,8 @@ Within 'Powered By Steam - Tweaks:
   - chemical plants
   - rocket silo
   - roboports
+  - mining drills
+  - science labs & bio labs
 - removals:
   - all damage upgrades
   - everything involving lasers
@@ -29,12 +31,13 @@ Within 'Powered By Steam - Tweaks:
   - assembly machine 3s are unlocked on fulgora
   - science packs are replaced with 'science materials', which are just boxes with the previous science pack icon as labels on them
   - you start with no items at all
+  - burner miners are buffed to match the smelting speed of furnaces
   - locomotives have 0.5x as much acceleration
   - cargo wagons have 2x as much storage
   - locomotives can only take certain fuels? (if so, one loco type per fuel type?)
 - additions:
   - copper pipes, used in many recipes (just like gears)
-  - many more infinite-like researches?
+  - many more infinite researches?
 
 
 
@@ -52,7 +55,6 @@ Within 'Space Age To 1.1 Tweaks':
   - bulk inserters now max at 9 items
   - stack inserters now max at 15 items (and drop stacks of 3)
   - all other inserters now max at 3 items
-  - fluid wagons have 0.5x as mush storage
   - cliff explosives are not bounded to vulcanus
   - decrease return rate of asteroid reprocessing
   - make nutrient plants things take nutrient water instead of nutrients?

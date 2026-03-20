@@ -1,0 +1,9 @@
+{
+	"name": "space-age-to-1.1-tweaks",
+	"version": "0.1.0",
+	"title": "Space Age To 1.1 Tweaks",
+	"author": "What42Pizza",
+	"factorio_version": "2.0",
+	"dependencies": ["base >= 2.0", "space-age", "quality"],
+	"description": "Space Age is definitely an improvement over the base game, but it makes me miss some aspects of v1.1-era factories. This mod aims to fix that."
+}
