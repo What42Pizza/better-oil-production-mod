@@ -5,7 +5,7 @@ use crate::*;
 pub fn export(mod_path: PathBuf, output_path: Option<PathBuf>) -> Result<()> {
 	
 	// get version string
-	let info_file = fs::read_to_string(mod_path.join("info.json"))?;
+	let info_file = fs_read_to_string(mod_path.join("info.json"))?;
 	let version = 'version: {
 		for line in info_file.lines() {
 			let version_start = line.find("version");
@@ -16,9 +16,16 @@ pub fn export(mod_path: PathBuf, output_path: Option<PathBuf>) -> Result<()> {
 		return Err(Error::msg("Error: failed to find version field within file 'info.json'"));
 	};
 	
+	// misc mod data
 	let mod_name = mod_path.file_name().expect("Fatal: mod path seems to be empty").to_str().expect("Fatal: map path contains non-utf-8 characters");
-	let mut output_path = output_path.unwrap_or(mod_path.clone());
-	output_path.push(format!("{mod_name}_{version}.zip"));
+	let mut output_path =
+		output_path
+		.unwrap_or(mod_path.clone())
+		.join(format!("{mod_name}_{version}.zip"));
+	
+	// get items to export
+	let items_to_export = fs_read_to_string(mod_path.join("items-to-export.txt"))?;
+	let items_to_export = items_to_export.lines().collect::<Vec<_>>();
 	
 	// export all
 	let output_file = std::fs::File::create(output_path)?;
@@ -26,7 +33,7 @@ pub fn export(mod_path: PathBuf, output_path: Option<PathBuf>) -> Result<()> {
 	let options: FileOptions<()> = FileOptions::default();
 	let top_level_folder = format!("{mod_name}_{version}");
 	output_zip.add_directory(&top_level_folder, options.clone())?;
-	for item_name in ITEMS_TO_EXPORT {
+	for item_name in items_to_export {
 		let full_path = mod_path.join(item_name);
 		if full_path.is_dir() {
 			add_folder_to_zip(&mut output_zip, full_path, &top_level_folder, &mod_path, &options)?;
@@ -43,7 +50,7 @@ pub fn export(mod_path: PathBuf, output_path: Option<PathBuf>) -> Result<()> {
 pub fn add_file_to_zip<T: FileOptionExtension + Clone>(zip: &mut ZipWriter<File>, item_name: &str, full_path: PathBuf, top_level_folder: &str, options: &FileOptions<T>) -> Result<()> {
 	println!("Adding file '{item_name}'...");
 	zip.start_file(format!("{top_level_folder}/{item_name}"), options.clone())?;
-	let mut item_file = File::open(full_path)?;
+	let mut item_file = file_open(full_path)?;
 	std::io::copy(&mut item_file, zip)?;
 	Ok(())
 }
@@ -60,7 +67,7 @@ pub fn add_folder_to_zip<T: FileOptionExtension + Clone>(zip: &mut ZipWriter<Fil
 		} else {
 			println!("Adding file '{path_within_zip}...'");
 			zip.start_file(format!("{top_level_folder}/{path_within_zip}"), options.clone())?;
-			let mut item_file = File::open(full_path)?;
+			let mut item_file = file_open(full_path)?;
 			std::io::copy(&mut item_file, zip)?;
 		}
 	}

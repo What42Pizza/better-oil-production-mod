@@ -130,9 +130,6 @@ function update_bulk_inserter_size_increase(tech)
 		end
 	end
 end
-update_bulk_inserter_size_increase(data.raw["technology"]["inserter-capacity-bonus-5"])
-update_bulk_inserter_size_increase(data.raw["technology"]["inserter-capacity-bonus-6"])
-update_bulk_inserter_size_increase(data.raw["technology"]["inserter-capacity-bonus-7"])
 remove_effect(data.raw["technology"]["inserter-capacity-bonus-7"], function(effect) return effect.type == "inserter-stack-size-bonus" end)
 local stack_inserter = data.raw["inserter"]["stack-inserter"]
 stack_inserter.stack_size_bonus = 3
@@ -156,29 +153,40 @@ end
 
 
 
--- quality level tweaks
-data.raw["quality"]["uncommon"] .beacon_power_usage_multiplier = nil
-data.raw["quality"]["rare"]     .beacon_power_usage_multiplier = nil
-data.raw["quality"]["epic"]     .beacon_power_usage_multiplier = nil
-data.raw["quality"]["legendary"].beacon_power_usage_multiplier = nil
+-- quality technology tweaks
+local quality_module_2_tech = data.raw["technology"]["quality-module-2"]
+table.insert(quality_module_2_tech.effects, {
+	quality = "epic",
+	type = "unlock-quality"
+})
+data.raw["technology"]["epic-quality"].hidden = true
 
--- quality modules
-local quality_module_1 = data.raw["module"]["quality-module"]
-local quality_module_2 = data.raw["module"]["quality-module-2"]
-local quality_module_3 = data.raw["module"]["quality-module-3"]
+local quality_module_3_tech = data.raw["technology"]["quality-module-3"]
+table.insert(quality_module_3_tech.effects, {
+	quality = "legendary",
+	type = "unlock-quality"
+})
+data.raw["technology"]["legendary-quality"].hidden = true
 
--- speed module 3
+-- quality buff tweaks
+data.raw["quality"]["uncommon"] .beacon_power_usage_multiplier = 0.9
+data.raw["quality"]["rare"]     .beacon_power_usage_multiplier = 0.8
+data.raw["quality"]["epic"]     .beacon_power_usage_multiplier = 0.7
+data.raw["quality"]["legendary"].beacon_power_usage_multiplier = 0.6
+
+data.raw["quality"]["uncommon"] .mining_drill_resource_drain_multiplier = 0.85
+data.raw["quality"]["rare"]     .mining_drill_resource_drain_multiplier = 0.7
+data.raw["quality"]["epic"]     .mining_drill_resource_drain_multiplier = 0.55
+data.raw["quality"]["legendary"].mining_drill_resource_drain_multiplier = 0.4
+
 local speed_module_3 = data.raw["module"]["speed-module-3"]
 speed_module_3.effect.quality = -0.2
 
--- beacons
 local beacon = data.raw["beacon"]["beacon"]
-beacon.distribution_effectivity_bonus_per_quality_level = 0.0
+beacon.distribution_effectivity_bonus_per_quality_level = 0.1
 
--- chain tesla gun chain
 local chain_tesla_gun_chain = data.raw["chain-active-trigger"]["chain-tesla-gun-chain"]
 chain_tesla_gun_chain.fork_chance_increase_per_quality_level = 0.025
 
--- chain tesla turret chain
 local chain_tesla_turret_chain = data.raw["chain-active-trigger"]["chain-tesla-turret-chain"]
 chain_tesla_turret_chain.fork_chance_increase_per_quality_level = 0.025

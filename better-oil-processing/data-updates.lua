@@ -206,6 +206,16 @@ if mods["space-age"] then
 	})
 end
 
+-- casting steel tweaks
+if mods["space-age"] then
+	local casting_steel_recipe = data.raw["recipe"]["casting-steel"]
+	table.insert(casting_steel_recipe.ingredients, {
+		amount = 1,
+		name = "coke",
+		type = "item"
+	})
+end
+
 
 
 -- sulfur recipe removal

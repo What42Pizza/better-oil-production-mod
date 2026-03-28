@@ -3,24 +3,7 @@
 
 
 
-const ITEMS_TO_EXPORT: &[&str] = &[
-	"graphics",
-	"locale",
-	"changelog.txt",
-	"control.lua",
-	"data-final-fixes.lua",
-	"data-updates.lua",
-	"data.lua",
-	"info.json",
-	"LICENSE",
-	"mod-readme.txt",
-	"thumbnail.png",
-	"utils.lua",
-];
-
-
-
-pub use std::{fs::{self, File}, path::{Path, PathBuf}, sync::OnceLock, time::Instant, process::exit};
+pub use std::{fs::File, path::{Path, PathBuf}, sync::OnceLock, time::Instant, process::exit};
 pub use anyhow::*;
 pub use walkdir::WalkDir;
 pub use zip::{ZipWriter, write::{FileOptionExtension, FileOptions}};
@@ -29,6 +12,8 @@ pub use zip::{ZipWriter, write::{FileOptionExtension, FileOptions}};
 
 pub mod export;
 pub use export::*;
+pub mod utils;
+pub use utils::*;
 
 
 

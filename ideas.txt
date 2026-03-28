@@ -35,9 +35,14 @@ Within 'Powered By Steam - Tweaks:
   - locomotives have 0.5x as much acceleration
   - cargo wagons have 2x as much storage
   - locomotives can only take certain fuels? (if so, one loco type per fuel type?)
+  - electric mining drills are unlocked with blue science (or later?)
+  - agricultural towers are unlocked very early on and are used for something?
+  - unlock fish breeding earlier and make bots take fish as an ingredient?
+  - increase car's top speed?
 - additions:
   - copper pipes, used in many recipes (just like gears)
   - many more infinite researches?
+  - add a wood to crude oil recipe?
 
 
 
@@ -52,12 +57,15 @@ Within 'Space Age To 1.1 Tweaks':
   - foundries, electromagnetic plants, and nutrient plant things have a 25% prod bonus instead of 50%
   - bio-labs have a 75% science drain instead of 50%
   - (big mining drills are unchanged)
-  - bulk inserters now max at 9 items
   - stack inserters now max at 15 items (and drop stacks of 3)
+  - bulk inserters are unchanged
   - all other inserters now max at 3 items
   - cliff explosives are not bounded to vulcanus
   - decrease return rate of asteroid reprocessing
   - make nutrient plants things take nutrient water instead of nutrients?
+  - make space science take uranium 235
+  - allow chests in space?
+  - unlock mech armor on vulcanus?
 
 
 
