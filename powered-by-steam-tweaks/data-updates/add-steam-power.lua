@@ -98,3 +98,15 @@ addSteamPower(data.raw["mining-drill"]["electric-mining-drill"], {
 	}
 })
 addSteamPower(data.raw["mining-drill"]["pumpjack"], pipeConnections_LR)
+addSteamPower(data.raw["pump"]["pump"], {
+	{
+		position = {0.0, 0.5},
+		direction = 4,
+		flow_direction = "input-output"
+	},
+	{
+		position = {0.0, 0.5},
+		direction = 12,
+		flow_direction = "input-output"
+	}
+})

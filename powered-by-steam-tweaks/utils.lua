@@ -29,13 +29,31 @@ function remove_effect(input, check_fn, checking_for)
 			table.insert(to_remove, k)
 		end
 	end
-	if #to_remove == 0 then log("Warning: tried to remove " .. checking_for .. " but it was not found") end
+	if #to_remove == 0 then log("Warning: tried to remove effect " .. checking_for .. " but it was not found") end
 	for _,v in ipairs(to_remove) do
 		table.remove(input.effects, v)
 	end
 end
 
+
+
 function round(v, nearest)
 	if not nearest then nearest = 1.0 end
 	return math.floor(v / nearest + 0.5) * nearest
+end
+
+function find_remove(table_in, element)
+	if type(element) == "function" then
+		for k,v in pairs(table_in) do
+			if element(v) then
+				return table.remove(table_in, k)
+			end
+		end
+	else
+		for k,v in pairs(table_in) do
+			if v == element then
+				return table.remove(table_in, k)
+			end
+		end
+	end
 end

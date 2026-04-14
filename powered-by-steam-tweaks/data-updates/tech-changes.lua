@@ -27,35 +27,29 @@ fast_inserter.unit.ingredients = {
 	{ "chemical-science-pack", 1 }
 }
 fast_inserter.prerequisites = {
-	"inserter"
+	"inserter",
+	"chemical-science-pack"
 }
 
 
 
-data.raw["technology"]["physical-projectile-damage-1"].enabled = false
+data.raw["technology"]["advanced-material-processing-2"].hidden = true
+find_remove(data.raw["technology"]["production-science-pack"].prerequisites, "advanced-material-processing-2")
+find_remove(data.raw["technology"]["rocket-silo"].prerequisites, "advanced-material-processing-2")
+
+
+
 data.raw["technology"]["physical-projectile-damage-1"].hidden = true
-data.raw["technology"]["physical-projectile-damage-2"].enabled = false
 data.raw["technology"]["physical-projectile-damage-2"].hidden = true
-data.raw["technology"]["physical-projectile-damage-3"].enabled = false
 data.raw["technology"]["physical-projectile-damage-3"].hidden = true
-data.raw["technology"]["physical-projectile-damage-4"].enabled = false
 data.raw["technology"]["physical-projectile-damage-4"].hidden = true
-data.raw["technology"]["physical-projectile-damage-5"].enabled = false
 data.raw["technology"]["physical-projectile-damage-5"].hidden = true
-data.raw["technology"]["physical-projectile-damage-6"].enabled = false
 data.raw["technology"]["physical-projectile-damage-6"].hidden = true
-data.raw["technology"]["physical-projectile-damage-7"].enabled = false
 data.raw["technology"]["physical-projectile-damage-7"].hidden = true
 
-data.raw["technology"]["weapon-shooting-speed-1"].enabled = false
 data.raw["technology"]["weapon-shooting-speed-1"].hidden = true
-data.raw["technology"]["weapon-shooting-speed-2"].enabled = false
 data.raw["technology"]["weapon-shooting-speed-2"].hidden = true
-data.raw["technology"]["weapon-shooting-speed-3"].enabled = false
 data.raw["technology"]["weapon-shooting-speed-3"].hidden = true
-data.raw["technology"]["weapon-shooting-speed-4"].enabled = false
 data.raw["technology"]["weapon-shooting-speed-4"].hidden = true
-data.raw["technology"]["weapon-shooting-speed-5"].enabled = false
 data.raw["technology"]["weapon-shooting-speed-5"].hidden = true
-data.raw["technology"]["weapon-shooting-speed-6"].enabled = false
 data.raw["technology"]["weapon-shooting-speed-6"].hidden = true
