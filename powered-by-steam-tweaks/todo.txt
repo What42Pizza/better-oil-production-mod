@@ -2,4 +2,7 @@ add 'iron block' which engines are made from?
 add an alternative better recipe for steel that takes coke instead of coal
 add item 'resin' which is made from wood
 add resin as an ingredient for red belts
+make resin spoil into hardened resin?
+remove landfill ingredient from agricultural towers?
+add a very easy way to get spoilage?
 slightly decrease locomotive acceleration

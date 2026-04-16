@@ -53,9 +53,16 @@ agriculture.unit = {
 	},
 	time = 30
 }
+agriculture.effects = {
+	{ recipe = "agricultural-tower", type = "unlock-recipe" },
+	{ recipe = "wood-processing"   , type = "unlock-recipe" },
+}
 
 local logistics_2 = data.raw["technology"]["logistics-2"]
 table.insert(logistics_2.prerequisites, "agriculture")
+
+data.raw["technology"]["tree-seeding"].hidden = true
+data.raw["technology"]["fish-breeding"].prerequisites = { "agricultural-science-pack" }
 
 data.raw["technology"]["jellynut"].prerequisites = { "planet-discovery-gleba" }
 data.raw["technology"]["yumako"].prerequisites = { "planet-discovery-gleba" }

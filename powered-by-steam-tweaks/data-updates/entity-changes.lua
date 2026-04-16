@@ -24,7 +24,7 @@ data.raw["cargo-wagon"]["cargo-wagon"].inventory_size = 60
 local one_second = 60
 local one_minute = one_second * 60
 local one_hour = one_minute * 60
-data.raw["capsule"]["raw-fish"].spoil_ticks = one_hour
+data.raw["capsule"]["raw-fish"].spoil_ticks = 30 * one_minute
 
 data.raw["lab"]["lab"].inputs = {
 	"material-science-pack",
