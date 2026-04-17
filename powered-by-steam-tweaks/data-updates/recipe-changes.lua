@@ -20,6 +20,13 @@ advanced_circuit.ingredients = {
 	{ amount = 1 , name = "soft-plastic-bar"  , type = "item"  }
 }
 
+local agricultural_tower = data.raw["recipe"]["agricultural-tower"]
+agricultural_tower.ingredients = {
+	{ amount = 8, name = "copper-plate"      , type = "item" },
+	{ amount = 3, name = "electronic-circuit", type = "item" },
+	{ amount = 1, name = "landfill"          , type = "item" }
+}
+
 
 
 replace_ingredient_name(data.raw["recipe"]["lab"], "transport-belt", "pipe")
@@ -52,8 +59,6 @@ automation_science_pack.ingredients = {
 	{ amount = 1, name = "burner-mining-drill" , type = "item" }
 }
 
-
-
 local chemical_science_pack = data.raw["recipe"]["chemical-science-pack"]
 chemical_science_pack.category = "chemistry"
 chemical_science_pack.ingredients = {
@@ -61,3 +66,6 @@ chemical_science_pack.ingredients = {
 	{ amount = 5  , name = "plastic-bar"       , type = "item"  },
 	{ amount = 150, name = "sulfuric-acid"     , type = "fluid" }
 }
+
+local military_science_pack = data.raw["recipe"]["military-science-pack"]
+replace_ingredient(military_science_pack, "piercing-rounds-magazine", { amount = 5, name = "firearm-magazine", type = "item" })

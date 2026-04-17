@@ -6,3 +6,4 @@ make resin spoil into hardened resin?
 remove landfill ingredient from agricultural towers?
 add a very easy way to get spoilage?
 slightly decrease locomotive acceleration
+make rocket fuel into a fluid
