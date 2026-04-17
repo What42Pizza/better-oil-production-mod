@@ -15,8 +15,17 @@ end
 
 
 
--- spawners
+-- increase all spawner healths by 25%
 for _,unit_spawner in pairs(data.raw["unit-spawner"]) do
-	-- increase spawner health by 25%
 	if unit_spawner.max_health then unit_spawner.max_health = unit_spawner.max_health * 1.25 end
 end
+
+
+
+-- decrease tree pollution absorption by 50%
+for _,tree in pairs(data.raw["tree"]) do
+	if tree.emissions_per_second and tree.emissions_per_second.pollution then
+		tree.emissions_per_second.pollution = tree.emissions_per_second.pollution * 0.5
+	end
+end
+

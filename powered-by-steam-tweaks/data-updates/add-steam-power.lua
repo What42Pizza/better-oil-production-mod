@@ -5,6 +5,7 @@ function addSteamPower(prototype, pipe_connections)
 		type = "fluid",
 		scale_fluid_usage = true,
 		fluid_box = {
+			filter = "steam",
 			pipe_connections = pipe_connections,
 			volume = 100
 		},

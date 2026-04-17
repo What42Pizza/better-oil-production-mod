@@ -6,8 +6,12 @@ script.on_init(function()
 			["battery-mk2-equipment"] = 1,
 			["solar-panel-equipment"] = 19,
 			["construction-robot"] = 20,
-			["pistol"] = 1,
-			["firearm-magazine"] = 10,
 		})
+		remote.call("freeplay", "set_respawn_items", {})
+		remote.call("freeplay", "set_ship_items", {
+			["pistol"] = 1,
+			["firearm-magazine"] = 100,
+		})
+		remote.call("freeplay", "set_debris_items", {})
 	end
 end)

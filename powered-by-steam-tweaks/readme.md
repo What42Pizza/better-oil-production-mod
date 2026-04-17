@@ -1,4 +1,6 @@
-# Powered By Steam Tweaks Tweaks (Factorio Mod)
+# Powered By Steam Tweaks (Factorio Mod)
+
+A steampunk-inspired overhaul focused on unique types of production
 
 ![example](example.png)
 
@@ -6,4 +8,12 @@
 
 This contains all the custom tweaks for the Powered By Steam overhaul.
 
-Credits to Krastio2 for some of its utility code
+IF YOU WANT TO PLAY THIS MOD, you need to be aware of a few things:
+
+- This makes the game a bit more burner-like
+- This makes enemies stronger and defenses weaker
+- This makes production chains slightly longer and more complex
+
+These changes are based on my personal tastes, which may or may not line up with your own!
+
+Credits to Krastorio2 for some of its utility code

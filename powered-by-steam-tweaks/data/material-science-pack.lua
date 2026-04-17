@@ -16,6 +16,7 @@ data:extend{material_science_pack_recipe}
 
 local material_science_pack_tech = table.deepcopy(data.raw["technology"]["automation-science-pack"])
 material_science_pack_tech.name = "material-science-pack"
+material_science_pack_tech.icon = "__powered-by-steam-tweaks__/graphics/technology/material-science-pack.png"
 material_science_pack_tech.effects = {
 	{ recipe = "material-science-pack", type = "unlock-recipe" }
 }
