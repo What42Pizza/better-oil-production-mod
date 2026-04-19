@@ -21,4 +21,4 @@ The goal of this is to make Space Age bases more similar to pre- Space Age bases
 - Epic and Legendary qualities are unlocked with Quality Module 2 and Quality Module 3, meaning you can work towards legendary as soon as Fulgora
 - Asteroid reprocessing now returns 50% instead of 80% (because space casinos are too powerful & this now acts as a good way to void asteroids)
 
-Note: there is a similar mod, [AVADII Rebalance](https://mods.factorio.com/mod/AVADII-Rebalance), which you might also be interested in
+Note: there is a similar mod, [AVADII Rebalance](https://mods.factorio.com/mod/AVADII-Rebalance), which you might also be interested in!

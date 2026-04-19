@@ -1,34 +1,31 @@
+-- I've tried to lay this out as 'these tech are researched, then a new science pack is unlocked and these are researched, etc', but I decided kinda late so it might not fully be in order
+
 -- first techs
 
 local steam_power = data.raw["technology"]["steam-power"]
 steam_power.research_trigger.item = "copper-plate"
 steam_power.research_trigger.count = 10
-remove_effect(steam_power, function(effect) return effect.recipe == "pipe" end, "recipe \"pipe\"")
-remove_effect(steam_power, function(effect) return effect.recipe == "pipe-to-ground" end, "recipe \"pipe-to-ground\"")
-remove_effect(steam_power, function(effect) return effect.recipe == "steam-engine" end, "recipe \"steam-engine\"")
+remove_effect_recipe(steam_power, "pipe")
+remove_effect_recipe(steam_power, "pipe-to-ground")
+remove_effect_recipe(steam_power, "steam-engine")
 
 local electronics = data.raw["technology"]["electronics"]
 electronics.research_trigger.item = "iron-plate"
-remove_effect(electronics, function(effect) return effect.recipe == "inserter" end, "recipe \"inserter\"")
-remove_effect(electronics, function(effect) return effect.recipe == "copper-cable" end, "recipe \"copper-cable\"")
-remove_effect(electronics, function(effect) return effect.recipe == "small-electric-pole" end, "recipe \"small-electric-pole\"")
-remove_effect(electronics, function(effect) return effect.recipe == "electronic-circuit" end, "recipe \"electronic-circuit\"")
-table.insert(electronics.effects, {
-	recipe = "crude-camshaft-production",
-	type = "unlock-recipe"
-})
+remove_effect_recipe(electronics, "inserter")
+remove_effect_recipe(electronics, "copper-cable")
+remove_effect_recipe(electronics, "small-electric-pole")
+remove_effect_recipe(electronics, "electronic-circuit")
+table.insert(electronics.effects, { recipe = "crude-camshaft-production", type = "unlock-recipe" })
 
 local automation = data.raw["technology"]["automation"]
 automation.unit.count = 15
-remove_effect(automation, function(effect) return effect.recipe == "long-handed-inserter" end, "recipe \"long-handed-inserter\"")
-table.insert(automation.effects, {
-	recipe = "electronic-circuit",
-	type = "unlock-recipe"
-})
-table.insert(automation.effects, {
-	recipe = "graphite-lubricant",
-	type = "unlock-recipe"
-})
+remove_effect_recipe(automation, "long-handed-inserter")
+table.insert(automation.effects, { recipe = "electronic-circuit", type = "unlock-recipe" })
+table.insert(automation.effects, { recipe = "graphite-lubricant", type = "unlock-recipe" })
+
+
+
+-- material science start
 
 local electric_mining_drill = data.raw["technology"]["electric-mining-drill"]
 electric_mining_drill.prerequisites = { "material-science-pack", "steam-power" }
@@ -62,16 +59,17 @@ data.raw["technology"]["radar"].unit.count = 25
 data.raw["technology"]["radar"].prerequisites = { "material-science-pack", "electricity" }
 data.raw["technology"]["lamp"].unit.count = 25
 
+data.raw["technology"]["logistics"].unit.count = 25
+
+data.raw["technology"]["military"].unit.count = 50
 
 
--- early tech
+
+-- logistic science start
 
 local fluid_handling = data.raw["technology"]["fluid-handling"]
 fluid_handling.prerequisites = { "automation" }
-table.insert(fluid_handling.effects, 3, {
-	recipe = "electric-pump",
-	type = "unlock-recipe"
-})
+table.insert(fluid_handling.effects, 3, { recipe = "electric-pump", type = "unlock-recipe"})
 
 data.raw["technology"]["toolbelt"].unit.count = 100
 
@@ -84,32 +82,76 @@ data.raw["technology"]["fish-breeding"].prerequisites = { "agricultural-science-
 data.raw["technology"]["jellynut"].prerequisites = { "planet-discovery-gleba" }
 data.raw["technology"]["yumako"].prerequisites = { "planet-discovery-gleba" }
 
-data.raw["technology"]["military"].unit.count = 50
+local railway = data.raw["technology"]["railway"]
+table.insert(railway.effects, { recipe = "fluid-wagon", type = "unlock-recipe" })
+data.raw["technology"]["fluid-wagon"].hidden = true
 
-data.raw["technology"]["logistics"].unit.count = 25
+if mods["Mini_Trains"] then
+	
+	remove_effect_recipe(railway, "locomotive")
+	remove_effect_recipe(railway, "cargo-wagon")
+	remove_effect_recipe(railway, "fluid-wagon")
+	table.insert(railway.effects, { recipe = "mini-locomotive", type = "unlock-recipe" })
+	table.insert(railway.effects, { recipe = "mini-cargo-wagon", type = "unlock-recipe" })
+	table.insert(railway.effects, { recipe = "mini-fluid-wagon", type = "unlock-recipe" })
+	
+end
 
 
 
--- early-mid techs
+-- automation science start
 
 data.raw["technology"]["automobilism"].prerequisites = { "engine" }
 
 local chemical_science_pack = data.raw["technology"]["chemical-science-pack"]
-chemical_science_pack.unit.count = 100
 chemical_science_pack.prerequisites = { "plastics", "sulfur-processing" }
+chemical_science_pack.unit.count = 100
+chemical_science_pack.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
 
 data.raw["technology"]["advanced-material-processing-2"].hidden = true
 find_remove(data.raw["technology"]["production-science-pack"].prerequisites, "advanced-material-processing-2")
 find_remove(data.raw["technology"]["rocket-silo"].prerequisites, "advanced-material-processing-2")
 
 local fast_inserter = data.raw["technology"]["fast-inserter"]
+fast_inserter.prerequisites = { "long-handed-inserter", "automation-science-pack" }
 fast_inserter.unit.count = 75
 fast_inserter.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
-	{ "automation-science-pack", 1 }
+	{ "automation-science-pack", 1 },
 }
-fast_inserter.prerequisites = { "long-handed-inserter", "chemical-science-pack" }
+
+local automation_2 = data.raw["technology"]["automation-2"]
+automation_2.prerequisites = { "automation", "steel-processing", "automation-science-pack" }
+automation_2.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+local military_2 = data.raw["technology"]["military-2"]
+military_2.prerequisites = { "military", "steel-processing", "automation-science-pack" }
+remove_effect_recipe(military_2, "piercing-rounds-magazine")
+military_2.unit.count = 150
+military_2.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+local gate = data.raw["technology"]["gate"]
+gate.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+local military_science_pack = data.raw["technology"]["military-science-pack"]
+table.insert(military_science_pack.unit.ingredients, { "automation-science-pack", 1 })
 
 local advanced_circuit = data.raw["technology"]["advanced-circuit"]
 advanced_circuit.prerequisites = { "chemical-science-pack", "lubricant", "electronics" }
@@ -117,37 +159,14 @@ advanced_circuit.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
-
---local automation_2 = data.raw["technology"]["automation-2"]
---automation_2.prerequisites = {
---	"automation",
---	"steel-processing",
---	"advanced-circuit"
---}
---automation_2.unit.ingredients = {
---	{ "material-science-pack"  , 1 },
---	{ "logistic-science-pack"  , 1 },
---	{ "automation-science-pack", 1 },
---	{ "chemical-science-pack"  , 1 }
---}
 
 data.raw["technology"]["battery"].unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
-}
-
-local military_2 = data.raw["technology"]["military-2"]
-military_2.prerequisites = { "military", "steel-processing", "chemical-science-pack" }
-remove_effect(military_2, function(effect) return effect.recipe == "piercing-rounds-magazine" end, "recipe \"piercing-rounds-magazine\"")
-military_2.unit.count = 150
-military_2.unit.ingredients = {
-	{ "material-science-pack"  , 1 },
-	{ "logistic-science-pack"  , 1 },
-	{ "automation-science-pack", 1 }
+	{ "chemical-science-pack"  , 1 },
 }
 
 local flammables = data.raw["technology"]["flammables"]
@@ -156,7 +175,7 @@ flammables.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
 
 local electric_energy_distribution_1 = data.raw["technology"]["electric-energy-distribution-1"]
@@ -165,9 +184,9 @@ electric_energy_distribution_1.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
-remove_effect(electric_energy_distribution_1, function(effect) return effect.recipe == "big-electric-pole" end, "recipe \"big-electric-pole\"")
+remove_effect_recipe(electric_energy_distribution_1, "big-electric-pole")
 
 local electric_energy_distribution_2 = data.raw["technology"]["electric-energy-distribution-2"]
 electric_energy_distribution_2.prerequisites = { "electric-energy-distribution-1", "utility-science-pack" }
@@ -176,31 +195,32 @@ electric_energy_distribution_2.unit.ingredients = {
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
 	{ "chemical-science-pack"  , 1 },
-	{ "utility-science-pack"   , 1 }
+	{ "utility-science-pack"   , 1 },
 }
 
 data.raw["technology"]["explosives"].unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
 
 data.raw["technology"]["electric-energy-accumulators"].unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
 
 data.raw["technology"]["mining-productivity-1"].unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
 
 local military_3 = data.raw["technology"]["military-3"]
+military_3.unit.count = 175
 table.insert(military_3.effects, 1, { recipe = "piercing-rounds-magazine", type = "unlock-recipe" })
 
 local rocketry = data.raw["technology"]["rocketry"]
@@ -209,8 +229,18 @@ rocketry.unit.ingredients = {
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
 	{ "military-science-pack"  , 1 },
-	{ "chemical-science-pack"  , 1 }
+	{ "chemical-science-pack"  , 1 },
 }
+
+
+
+-- fix some techs
+
+local discharge_defense = data.raw["technology"]["discharge-defense-equipment"]
+replace_prerequisite(discharge_defense, "laser-turret", "battery")
+
+local distractor = data.raw["technology"]["distractor"]
+replace_prerequisite(distractor, "laser", "battery")
 
 
 
@@ -243,6 +273,11 @@ data.raw["technology"]["weapon-shooting-speed-3"].hidden = true
 data.raw["technology"]["weapon-shooting-speed-4"].hidden = true
 data.raw["technology"]["weapon-shooting-speed-5"].hidden = true
 data.raw["technology"]["weapon-shooting-speed-6"].hidden = true
+
+data.raw["technology"]["electric-weapons-damage-1"].hidden = true
+data.raw["technology"]["electric-weapons-damage-2"].hidden = true
+data.raw["technology"]["electric-weapons-damage-3"].hidden = true
+data.raw["technology"]["electric-weapons-damage-4"].hidden = true
 
 data.raw["technology"]["braking-force-1"].hidden = true
 data.raw["technology"]["braking-force-2"].hidden = true

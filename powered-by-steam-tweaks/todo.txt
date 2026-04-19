@@ -3,8 +3,10 @@ add an alternative better recipe for steel that takes coke instead of coal
 add item 'resin' which is made from wood
 add resin as an ingredient for red belts
 make resin spoil into hardened resin?
-remove landfill ingredient from agricultural towers?
 add a very easy way to get spoilage?
 slightly decrease locomotive acceleration
 make rocket fuel into a fluid
 add seeds to compost recipes
+make rails easier to craft and stack higher?
+nerf nuclear power (both reactor and boilers)
+make locomotives louder?

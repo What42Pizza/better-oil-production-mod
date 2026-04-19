@@ -30,6 +30,14 @@ function replace_result(input, result_name, new_result)
 	end
 end
 
+function replace_prerequisite(input, prereq_name, new_prereq)
+	for k,v in pairs(input.prerequisites) do
+		if v == prereq_name then
+			input.prerequisites[k] = new_prereq
+		end
+	end
+end
+
 function remove_effect(input, check_fn, checking_for)
 	local to_remove = {}
 	for k,v in pairs(input.effects) do
@@ -38,6 +46,19 @@ function remove_effect(input, check_fn, checking_for)
 		end
 	end
 	if #to_remove == 0 then log("Warning: tried to remove effect " .. checking_for .. " but it was not found") end
+	for _,v in ipairs(to_remove) do
+		table.remove(input.effects, v)
+	end
+end
+
+function remove_effect_recipe(input, recipe_name)
+	local to_remove = {}
+	for k,v in pairs(input.effects) do
+		if v.recipe == recipe_name then
+			table.insert(to_remove, k)
+		end
+	end
+	if #to_remove == 0 then log("Warning: tried to remove effect for recipe \"" .. recipe_name .. "\" but it was not found") end
 	for _,v in ipairs(to_remove) do
 		table.remove(input.effects, v)
 	end

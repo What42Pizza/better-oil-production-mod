@@ -1,10 +1,13 @@
 data.raw["character"]["character"].running_speed = 0.17
 
 data.raw["mining-drill"]["burner-mining-drill"].mining_speed = 1.0 / 2.4 * 1.25
+data.raw["mining-drill"]["electric-mining-drill"].mining_speed = 0.6
 
 data.raw["construction-robot"]["construction-robot"].speed = 0.08
 
 data.raw["inserter"]["inserter"].rotation_speed = 0.018
+
+data.raw["pipe-to-ground"]["pipe-to-ground"].fluid_box.pipe_connections[2].max_underground_distance = 12
 
 furnace_to_assembler("stone-furnace")
 furnace_to_assembler("steel-furnace")

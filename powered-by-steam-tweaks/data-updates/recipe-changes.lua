@@ -92,3 +92,7 @@ chemical_science_pack.ingredients = {
 
 local military_science_pack = data.raw["recipe"]["military-science-pack"]
 replace_ingredient(military_science_pack, "piercing-rounds-magazine", { amount = 5, name = "firearm-magazine", type = "item" })
+table.insert(military_science_pack.ingredients, 2, { amount = 1, name = "steel-plate", type = "item" })
+
+local discharge_defense = data.raw["recipe"]["discharge-defense-equipment"]
+replace_ingredient(discharge_defense, "laser-turret", { amount = 100, name = "battery", type = "item" })
