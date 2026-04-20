@@ -4,13 +4,25 @@ for _,unit in pairs(data.raw["unit"]) do
 	-- increase biter (and more) health by 50%
 	if unit.max_health then unit.max_health = unit.max_health * 1.5 end
 	
-	-- half all resistance decreases
+	-- decrease all resistance decreases by 50%
 	if unit.resistances then
 		for _,resistance in ipairs(unit.resistances) do
 			if resistance.decrease then resistance.decrease = resistance.decrease * 0.5 end
 		end
 	end
 	
+end
+
+
+
+-- worms
+for _,worm in pairs(data.raw["turret"]) do
+	-- decrease all resistance decreases by 50%
+	if worm.resistances then
+		for _,resistance in ipairs(worm.resistances) do
+			if resistance.decrease then resistance.decrease = resistance.decrease * 0.5 end
+		end
+	end
 end
 
 

@@ -3,7 +3,7 @@ Version: 0.2.1
 Date:
   Balancing:
     - Replaced 'steam' ingredient with 'water' in sulfuric acid recipe
-	- Decreased chemical plant crafting speed to 1.25
+	- Reverted chemical plant crafting speed to 1.0
 	- Decreased asphalt technology cost to 200
   Translation:
     - Removed custom name for 'Lubricant' technology

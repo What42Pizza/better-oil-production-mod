@@ -142,6 +142,9 @@ military_2.unit.ingredients = {
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
 }
+table.insert(military_2.effects, { recipe = "poison-capsule"  , type = "unlock-recipe" })
+table.insert(military_2.effects, { recipe = "slowdown-capsule", type = "unlock-recipe" })
+table.insert(military_2.effects, { recipe = "combat-shotgun"  , type = "unlock-recipe" })
 
 local gate = data.raw["technology"]["gate"]
 gate.unit.ingredients = {
@@ -150,8 +153,40 @@ gate.unit.ingredients = {
 	{ "automation-science-pack", 1 },
 }
 
+local inserter_capacity_bonus_1 = data.raw["technology"]["inserter-capacity-bonus-1"]
+inserter_capacity_bonus_1.prerequisites = { "electricity", "automation-science-pack"}
+
+data.raw["technology"]["sulfur-processing"].unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+data.raw["technology"]["plastics"].unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+
+
+-- military and chemical science start
+
 local military_science_pack = data.raw["technology"]["military-science-pack"]
 table.insert(military_science_pack.unit.ingredients, { "automation-science-pack", 1 })
+
+local flammables = data.raw["technology"]["flammables"]
+flammables.prerequisites = { "military-2", "military-science-pack" }
+flammables.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+	{ "military-science-pack", 1 },
+}
+
+
+
+-- chemical science start
 
 local advanced_circuit = data.raw["technology"]["advanced-circuit"]
 advanced_circuit.prerequisites = { "chemical-science-pack", "lubricant", "electronics" }
@@ -169,15 +204,6 @@ data.raw["technology"]["battery"].unit.ingredients = {
 	{ "chemical-science-pack"  , 1 },
 }
 
-local flammables = data.raw["technology"]["flammables"]
-flammables.prerequisites = { "military-2", "chemical-science-pack" }
-flammables.unit.ingredients = {
-	{ "material-science-pack"  , 1 },
-	{ "logistic-science-pack"  , 1 },
-	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 },
-}
-
 local electric_energy_distribution_1 = data.raw["technology"]["electric-energy-distribution-1"]
 electric_energy_distribution_1.prerequisites = { "chemical-science-pack", "steel-processing" }
 electric_energy_distribution_1.unit.ingredients = {
@@ -188,17 +214,27 @@ electric_energy_distribution_1.unit.ingredients = {
 }
 remove_effect_recipe(electric_energy_distribution_1, "big-electric-pole")
 
-local electric_energy_distribution_2 = data.raw["technology"]["electric-energy-distribution-2"]
-electric_energy_distribution_2.prerequisites = { "electric-energy-distribution-1", "utility-science-pack" }
-electric_energy_distribution_2.unit.ingredients = {
+local bulk_inserter = data.raw["technology"]["bulk-inserter"]
+table.insert(bulk_inserter.prerequisites, "chemical-science-pack")
+bulk_inserter.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
 	{ "chemical-science-pack"  , 1 },
-	{ "utility-science-pack"   , 1 },
 }
 
-data.raw["technology"]["explosives"].unit.ingredients = {
+local inserter_capacity_bonus_2 = data.raw["technology"]["inserter-capacity-bonus-2"]
+inserter_capacity_bonus_2.prerequisites = { "inserter-capacity-bonus-1", "bulk-inserter" }
+inserter_capacity_bonus_2.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+	{ "chemical-science-pack"  , 1 },
+}
+
+local explosives = data.raw["technology"]["explosives"]
+explosives.prerequisites = { "military-3" }
+explosives.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
@@ -222,6 +258,9 @@ data.raw["technology"]["mining-productivity-1"].unit.ingredients = {
 local military_3 = data.raw["technology"]["military-3"]
 military_3.unit.count = 175
 table.insert(military_3.effects, 1, { recipe = "piercing-rounds-magazine", type = "unlock-recipe" })
+remove_effect_recipe(military_3, "poison-capsule")
+remove_effect_recipe(military_3, "slowdown-capsule")
+remove_effect_recipe(military_3, "combat-shotgun")
 
 local rocketry = data.raw["technology"]["rocketry"]
 rocketry.unit.ingredients = {

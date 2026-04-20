@@ -33,8 +33,12 @@ electronic_circuit.ingredients = {
 local advanced_circuit = data.raw["recipe"]["advanced-circuit"]
 advanced_circuit.ingredients = {
 	{ amount = 3 , name = "electronic-circuit", type = "item"  },
+	{ amount = 2 , name = "iron-gear-wheel"   , type = "item"  },
 	{ amount = 10, name = "lubricant"         , type = "fluid" },
 	{ amount = 1 , name = "soft-plastic-bar"  , type = "item"  },
+}
+advanced_circuit.result = {
+	{ amount = 2, name = "advanced-circuit", type = "item" }
 }
 
 local agricultural_tower = data.raw["recipe"]["agricultural-tower"]
@@ -91,8 +95,11 @@ chemical_science_pack.ingredients = {
 }
 
 local military_science_pack = data.raw["recipe"]["military-science-pack"]
-replace_ingredient(military_science_pack, "piercing-rounds-magazine", { amount = 5, name = "firearm-magazine", type = "item" })
+replace_ingredient(military_science_pack, "piercing-rounds-magazine", { amount = 3, name = "firearm-magazine", type = "item" })
 table.insert(military_science_pack.ingredients, 2, { amount = 1, name = "steel-plate", type = "item" })
+
+local defender_capsule = data.raw["recipe"]["defender-capsule"]
+replace_ingredient_name(defender_capsule, "piercing-rounds-magazine", "firearm-magazine")
 
 local discharge_defense = data.raw["recipe"]["discharge-defense-equipment"]
 replace_ingredient(discharge_defense, "laser-turret", { amount = 100, name = "battery", type = "item" })

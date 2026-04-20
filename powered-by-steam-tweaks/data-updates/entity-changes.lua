@@ -1,4 +1,6 @@
-data.raw["character"]["character"].running_speed = 0.17
+local character = data.raw["character"]["character"]
+character.running_speed = 0.17 -- up from 0.15
+character.inventory_size = 100 -- up from 80
 
 data.raw["mining-drill"]["burner-mining-drill"].mining_speed = 1.0 / 2.4 * 1.25
 data.raw["mining-drill"]["electric-mining-drill"].mining_speed = 0.6
