@@ -20,9 +20,7 @@ end
 
 -- update red science tech
 local automation_science_pack_tech = data.raw["technology"]["automation-science-pack"]
-automation_science_pack_tech.prerequisites = {
-	"logistic-science-pack"
-}
+automation_science_pack_tech.prerequisites = { "logistic-science-pack", "plastics" }
 automation_science_pack_tech.research_trigger = nil
 automation_science_pack_tech.unit = {
 	count = 100,

@@ -63,13 +63,20 @@ data.raw["technology"]["logistics"].unit.count = 25
 
 data.raw["technology"]["military"].unit.count = 50
 
+local fluid_handling = data.raw["technology"]["fluid-handling"]
+fluid_handling.prerequisites = { "material-science-pack" }
+table.insert(fluid_handling.effects, 3, { recipe = "electric-pump", type = "unlock-recipe"})
+fluid_handling.unit.ingredients = {
+	{ "material-science-pack", 1 }
+}
+
 
 
 -- logistic science start
 
-local fluid_handling = data.raw["technology"]["fluid-handling"]
-fluid_handling.prerequisites = { "automation" }
-table.insert(fluid_handling.effects, 3, { recipe = "electric-pump", type = "unlock-recipe"})
+local oil_gathering = data.raw["technology"]["oil-gathering"]
+oil_gathering.prerequisites = { "logistic-science-pack", "fluid-handling" }
+oil_gathering.unit.count = 50
 
 data.raw["technology"]["toolbelt"].unit.count = 100
 
@@ -83,6 +90,7 @@ data.raw["technology"]["jellynut"].prerequisites = { "planet-discovery-gleba" }
 data.raw["technology"]["yumako"].prerequisites = { "planet-discovery-gleba" }
 
 local railway = data.raw["technology"]["railway"]
+railway.prerequisites = { "engine", "logistic-science-pack" }
 table.insert(railway.effects, { recipe = "fluid-wagon", type = "unlock-recipe" })
 data.raw["technology"]["fluid-wagon"].hidden = true
 
@@ -97,6 +105,16 @@ if mods["Mini_Trains"] then
 	
 end
 
+data.raw["technology"]["sulfur-processing"].unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+}
+
+data.raw["technology"]["plastics"].unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+}
+
 
 
 -- automation science start
@@ -104,7 +122,7 @@ end
 data.raw["technology"]["automobilism"].prerequisites = { "engine" }
 
 local chemical_science_pack = data.raw["technology"]["chemical-science-pack"]
-chemical_science_pack.prerequisites = { "plastics", "sulfur-processing" }
+chemical_science_pack.prerequisites = { "plastics", "sulfur-processing", "automation-science-pack" }
 chemical_science_pack.unit.count = 100
 chemical_science_pack.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
@@ -154,19 +172,44 @@ gate.unit.ingredients = {
 }
 
 local inserter_capacity_bonus_1 = data.raw["technology"]["inserter-capacity-bonus-1"]
-inserter_capacity_bonus_1.prerequisites = { "electricity", "automation-science-pack"}
+inserter_capacity_bonus_1.prerequisites = { "electricity", "automation-science-pack" }
 inserter_capacity_bonus_1.effects = {
 	{ modifier = 1, type = "bulk-inserter-capacity-bonus" },
 	{ modifier = 1, type = "inserter-stack-size-bonus" },
 }
-
-data.raw["technology"]["sulfur-processing"].unit.ingredients = {
+inserter_capacity_bonus_1.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
 }
 
-data.raw["technology"]["plastics"].unit.ingredients = {
+local advanced_oil_processing = data.raw["technology"]["advanced-oil-processing"]
+advanced_oil_processing.prerequisites = { "automation-science-pack", "sulfur-processing" }
+advanced_oil_processing.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+local lubricant = data.raw["technology"]["lubricant"]
+lubricant.prerequisites = { "advanced-oil-processing" }
+lubricant.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+local asphalt = data.raw["technology"]["asphalt"]
+asphalt.prerequisites = { "advanced-oil-processing" }
+asphalt.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+}
+
+local advanced_circuit = data.raw["technology"]["advanced-circuit"]
+advanced_circuit.prerequisites = { "electronics", "lubricant", "plastics" }
+advanced_circuit.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
@@ -174,7 +217,7 @@ data.raw["technology"]["plastics"].unit.ingredients = {
 
 
 
--- military and chemical science start
+-- military science start
 
 local military_science_pack = data.raw["technology"]["military-science-pack"]
 table.insert(military_science_pack.unit.ingredients, { "automation-science-pack", 1 })
@@ -192,16 +235,8 @@ flammables.unit.ingredients = {
 
 -- chemical science start
 
-local advanced_circuit = data.raw["technology"]["advanced-circuit"]
-advanced_circuit.prerequisites = { "chemical-science-pack", "lubricant", "electronics" }
-advanced_circuit.unit.ingredients = {
-	{ "material-science-pack"  , 1 },
-	{ "logistic-science-pack"  , 1 },
-	{ "automation-science-pack", 1 },
-	{ "chemical-science-pack"  , 1 },
-}
-
 local battery = data.raw["technology"]["battery"]
+battery.prerequisites = { "sulfur-processing", "chemical-science-pack" }
 battery.unit.count = 100
 battery.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
@@ -311,6 +346,7 @@ end
 -- remove some techs
 
 data.raw["technology"]["electric-energy-distribution-2"].hidden = true
+data.raw["technology"]["effect-transmission"].hidden = true
 
 data.raw["technology"]["physical-projectile-damage-1"].hidden = true
 data.raw["technology"]["physical-projectile-damage-2"].hidden = true
@@ -319,6 +355,14 @@ data.raw["technology"]["physical-projectile-damage-4"].hidden = true
 data.raw["technology"]["physical-projectile-damage-5"].hidden = true
 data.raw["technology"]["physical-projectile-damage-6"].hidden = true
 data.raw["technology"]["physical-projectile-damage-7"].hidden = true
+
+data.raw["technology"]["refined-flammables-1"].hidden = true
+data.raw["technology"]["refined-flammables-2"].hidden = true
+data.raw["technology"]["refined-flammables-3"].hidden = true
+data.raw["technology"]["refined-flammables-4"].hidden = true
+data.raw["technology"]["refined-flammables-5"].hidden = true
+data.raw["technology"]["refined-flammables-6"].hidden = true
+data.raw["technology"]["refined-flammables-7"].hidden = true
 
 data.raw["technology"]["weapon-shooting-speed-1"].hidden = true
 data.raw["technology"]["weapon-shooting-speed-2"].hidden = true

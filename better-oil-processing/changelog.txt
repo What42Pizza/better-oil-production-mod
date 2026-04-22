@@ -5,6 +5,7 @@ Date:
     - Replaced 'steam' ingredient with 'water' in sulfuric acid recipe
 	- Reverted chemical plant crafting speed to 1.0
 	- Decreased asphalt technology cost to 200
+	- Decreased sulfur resource frequency
   Translation:
     - Removed custom name for 'Lubricant' technology
 ---------------------------------------------------------------------------------------------------

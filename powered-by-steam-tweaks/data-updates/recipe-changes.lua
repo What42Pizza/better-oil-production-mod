@@ -84,19 +84,24 @@ engine.ingredients = {
 	{ amount = 3 , name = "steel-plate"       , type = "item"  },
 }
 
+local rail = data.raw["recipe"]["rail"]
+find_remove(rail.ingredients, function(v) return v.name == "iron-stick" end)
+rail.results[1].amount = 3
+
 
 
 local automation_science_pack = data.raw["recipe"]["automation-science-pack"]
 automation_science_pack.ingredients = {
 	{ amount = 1, name = "assembling-machine-1", type = "item" },
 	{ amount = 1, name = "burner-mining-drill" , type = "item" },
+	{ amount = 1, name = "plastic-bar"         , type = "item" },
 }
 
 local chemical_science_pack = data.raw["recipe"]["chemical-science-pack"]
 chemical_science_pack.category = "chemistry"
 chemical_science_pack.ingredients = {
 	{ amount = 30 , name = "graphite-lubricant", type = "fluid" },
-	{ amount = 5  , name = "plastic-bar"       , type = "item"  },
+	{ amount = 5  , name = "soft-plastic-bar"  , type = "item"  },
 	{ amount = 150, name = "sulfuric-acid"     , type = "fluid" },
 }
 

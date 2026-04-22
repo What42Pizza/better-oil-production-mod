@@ -21,7 +21,10 @@ table.insert(assembling_machine_1.crafting_categories, "organic-or-assembling")
 assembling_machine_1.fluid_boxes = table.deepcopy(data.raw["assembling-machine"]["assembling-machine-2"].fluid_boxes)
 assembling_machine_1.fluid_boxes_off_when_no_fluid_recipe = true
 
-data.raw["cargo-wagon"]["cargo-wagon"].inventory_size = 60
+data.raw["cargo-wagon"]["cargo-wagon"].inventory_size = 80
+if mods["Mini_Trains"] then
+	data.raw["cargo-wagon"]["mini-cargo-wagon"].inventory_size = 40
+end
 
 local agricultural_tower = data.raw["agricultural-tower"]["agricultural-tower"]
 local agricultural_tower_speed = agricultural_tower.crane.speed
