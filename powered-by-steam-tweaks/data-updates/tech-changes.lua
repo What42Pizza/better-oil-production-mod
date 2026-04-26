@@ -170,8 +170,8 @@ gate.unit.ingredients = {
 local inserter_capacity_bonus_1 = data.raw["technology"]["inserter-capacity-bonus-1"]
 inserter_capacity_bonus_1.prerequisites = { "electricity", "automation-science-pack" }
 inserter_capacity_bonus_1.effects = {
+	{ modifier = 1, type = "inserter-stack-size-bonus"    },
 	{ modifier = 1, type = "bulk-inserter-capacity-bonus" },
-	{ modifier = 1, type = "inserter-stack-size-bonus" },
 }
 inserter_capacity_bonus_1.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
@@ -260,18 +260,27 @@ bulk_inserter.unit.ingredients = {
 local military_science_pack = data.raw["technology"]["military-science-pack"]
 table.insert(military_science_pack.unit.ingredients, { "automation-science-pack", 1 })
 
+local modular_armor = data.raw["technology"]["modular-armor"]
+modular_armor.unit.ingredients = {
+	{ "material-science-pack"  , 1 },
+	{ "logistic-science-pack"  , 1 },
+	{ "automation-science-pack", 1 },
+	{ "military-science-pack"  , 1 },
+}
+
+
+
+-- chemical science start
+
 local flammables = data.raw["technology"]["flammables"]
 flammables.prerequisites = { "military-2", "military-science-pack" }
 flammables.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
-	{ "military-science-pack", 1 },
+	{ "military-science-pack"  , 1 },
+	{ "chemical-science-pack"  , 1 },
 }
-
-
-
--- chemical science start
 
 local battery = data.raw["technology"]["battery"]
 battery.prerequisites = { "sulfur-processing", "chemical-science-pack" }
@@ -304,6 +313,9 @@ bulk_inserter.unit.ingredients = {
 
 local inserter_capacity_bonus_2 = data.raw["technology"]["inserter-capacity-bonus-2"]
 inserter_capacity_bonus_2.prerequisites = { "inserter-capacity-bonus-1", "bulk-inserter" }
+inserter_capacity_bonus_2.effects = {
+	{ modifier = 1, type = "bulk-inserter-capacity-bonus" },
+}
 inserter_capacity_bonus_2.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
@@ -317,6 +329,7 @@ explosives.unit.ingredients = {
 	{ "material-science-pack"  , 1 },
 	{ "logistic-science-pack"  , 1 },
 	{ "automation-science-pack", 1 },
+	{ "military-science-pack"  , 1 },
 	{ "chemical-science-pack"  , 1 },
 }
 
@@ -373,6 +386,21 @@ electric_engine.unit.ingredients = {
 	{ "automation-science-pack", 1 },
 	{ "chemical-science-pack"  , 1 },
 }
+
+local worker_robot_speed_1 = data.raw["technology"]["worker-robots-speed-1"]
+worker_robot_speed_1.unit.count = 200
+local worker_robot_speed_2 = data.raw["technology"]["worker-robots-speed-2"]
+worker_robot_speed_2.unit.count = 300
+local worker_robot_speed_3 = data.raw["technology"]["worker-robots-speed-3"]
+worker_robot_speed_3.unit.count = 450
+local worker_robot_speed_4 = data.raw["technology"]["worker-robots-speed-4"]
+worker_robot_speed_4.unit.count = 700
+local worker_robot_speed_5 = data.raw["technology"]["worker-robots-speed-5"]
+worker_robot_speed_5.unit.count = 1000
+local worker_robot_speed_6 = data.raw["technology"]["worker-robots-speed-6"]
+worker_robot_speed_6.unit.count = 1500
+local worker_robot_speed_7 = data.raw["technology"]["worker-robots-speed-7"]
+worker_robot_speed_7.unit.count_formula = "2^(L-6)*1500"
 
 
 

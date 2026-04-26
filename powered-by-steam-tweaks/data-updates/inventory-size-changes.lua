@@ -12,4 +12,4 @@ toolbelt_tech.unit.ingredients = {
 }
 
 local toolbelt_equipment_tech = data.raw["technology"]["toolbelt-equipment"]
-toolbelt_equipment_tech.prerequisites = { "toolbelt-6" }
+toolbelt_equipment_tech.prerequisites = { "toolbelt-8" }

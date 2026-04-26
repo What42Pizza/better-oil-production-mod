@@ -25,6 +25,16 @@ for _,worm in pairs(data.raw["turret"]) do
 	end
 end
 
+-- worm acid splatter
+data.raw["fire"]["acid-splash-fire-spitter-small"]    .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-spitter-medium"]   .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-spitter-big"]      .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-spitter-behemoth"] .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-worm-small"]       .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-worm-medium"]      .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-worm-big"]         .fade_out_duration = 15
+data.raw["fire"]["acid-splash-fire-worm-behemoth"]    .fade_out_duration = 15
+
 
 
 -- increase all spawner healths by 25%

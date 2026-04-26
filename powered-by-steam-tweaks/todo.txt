@@ -1,3 +1,5 @@
+make tank cannons much longer range and slower (maybe need to do shell range too?)
+combine purple and yellow science?
 add an alternative better recipe for steel that takes coke instead of coal
 make rocket fuel into a fluid
 nerf nuclear power (both reactor and boilers)

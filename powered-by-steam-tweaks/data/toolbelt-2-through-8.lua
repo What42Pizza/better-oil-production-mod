@@ -64,8 +64,39 @@ toolbelt_6.unit = {
 		{ "material-science-pack"  , 1 },
 		{ "logistic-science-pack"  , 1 },
 		{ "automation-science-pack", 1 },
-		{ "chemical-science-pack"  , 1 },
 	},
 	time = 30,
 }
 data:extend{toolbelt_6}
+
+local toolbelt_7 = table.deepcopy(data.raw["technology"]["toolbelt"])
+toolbelt_7.skip_material_science_tweaks = true
+toolbelt_7.name = "toolbelt-7"
+toolbelt_7.prerequisites = { "toolbelt-6" }
+toolbelt_7.unit = {
+	count = 60,
+	ingredients = {
+		{ "material-science-pack"  , 1 },
+		{ "logistic-science-pack"  , 1 },
+		{ "automation-science-pack", 1 },
+		{ "chemical-science-pack"  , 1 },
+	},
+	time = 30,
+}
+data:extend{toolbelt_7}
+
+local toolbelt_8 = table.deepcopy(data.raw["technology"]["toolbelt"])
+toolbelt_8.skip_material_science_tweaks = true
+toolbelt_8.name = "toolbelt-8"
+toolbelt_8.prerequisites = { "toolbelt-7" }
+toolbelt_8.unit = {
+	count = 70,
+	ingredients = {
+		{ "material-science-pack"  , 1 },
+		{ "logistic-science-pack"  , 1 },
+		{ "automation-science-pack", 1 },
+		{ "chemical-science-pack"  , 1 },
+	},
+	time = 30,
+}
+data:extend{toolbelt_8}

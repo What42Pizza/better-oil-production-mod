@@ -8,7 +8,10 @@ nauvis.map_gen_settings.autoplace_controls["iron-ore"]               = { size = 
 --nauvis.map_gen_settings.autoplace_controls["nauvis_cliff"]           = { size = 1, frequency = 1, richness = 1 }
 --nauvis.map_gen_settings.autoplace_controls["rocks"]                  = { size = 1, frequency = 1, richness = 1 }
 --nauvis.map_gen_settings.autoplace_controls["starting_area_moisture"] = { size = 1, frequency = 1, richness = 1 }
---nauvis.map_gen_settings.autoplace_controls["stone"]                  = { size = 1, frequency = 1, richness = 1 }
+nauvis.map_gen_settings.autoplace_controls["stone"]                  = { size = 1, frequency = 1, richness = 2 }
 --nauvis.map_gen_settings.autoplace_controls["trees"]                  = { size = 1, frequency = 1, richness = 1 }
 --nauvis.map_gen_settings.autoplace_controls["uranium-ore"]            = { size = 1, frequency = 1, richness = 1 }
 --nauvis.map_gen_settings.autoplace_controls["water"]                  = { size = 1, frequency = 1, richness = 1 }
+
+data.raw["tile"]["water"].autoplace.probability_expression = "water_base(8, 100)"
+data.raw["tile"]["deepwater"].autoplace.probability_expression = "water_base(0, 100)"

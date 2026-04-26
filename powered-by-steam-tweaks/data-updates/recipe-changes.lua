@@ -149,7 +149,7 @@ local chemical_science_pack = data.raw["recipe"]["chemical-science-pack"]
 chemical_science_pack.category = "chemistry"
 chemical_science_pack.ingredients = {
 	{ amount = 30 , name = "graphite-lubricant", type = "fluid" },
-	{ amount = 5  , name = "soft-plastic-bar"  , type = "item"  },
+	{ amount = 4  , name = "soft-plastic-bar"  , type = "item"  },
 	{ amount = 150, name = "sulfuric-acid"     , type = "fluid" },
 }
 
@@ -162,3 +162,8 @@ replace_ingredient_name(defender_capsule, "piercing-rounds-magazine", "firearm-m
 
 local discharge_defense = data.raw["recipe"]["discharge-defense-equipment"]
 replace_ingredient(discharge_defense, "laser-turret", { amount = 100, name = "battery", type = "item" })
+
+local stone_wall = data.raw["recipe"]["stone-wall"]
+stone_wall.ingredients = {
+	{ amount = 4, name = "stone-brick", type = "item" },
+}
